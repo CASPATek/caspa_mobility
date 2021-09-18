@@ -37,6 +37,8 @@ android {
         applicationId "com.example.caspa_mobility"
         minSdkVersion 19
         targetSdkVersion 30
+        multiDexEnabled true
+       
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
