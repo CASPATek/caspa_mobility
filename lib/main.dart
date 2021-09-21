@@ -18,8 +18,8 @@ Future main() async {
   // await Permission.microphone.request();
   // await Permission.storage.request();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: Colors.blue, // navigation bar color
-    statusBarColor: Colors.pink, // status bar color
+    systemNavigationBarColor: Colors.deepOrangeAccent, // navigation bar color
+    statusBarColor: Colors.deepOrangeAccent, // status bar color
   ));
   if (Platform.isAndroid) {
     await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
@@ -47,7 +47,7 @@ Future main() async {
   //void main() => runApp(MaterialApp(home: WebViewExample()));
 
   runApp(MaterialApp(
-
+              title: "CASPA",
       debugShowCheckedModeBanner: false,
       home: InAppWebViewExampleScreen()));
 }
