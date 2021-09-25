@@ -1,4 +1,7 @@
 // Flutter imports:
+import 'package:animate_do/animate_do.dart';
+import 'package:caspa_mobility/utils/constants/colors.dart';
+import 'package:caspa_mobility/utils/paint/caspa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'in_app_webiew_example.screen.dart';
@@ -11,31 +14,25 @@ class SplashPage extends StatefulWidget {
 void goToApp(BuildContext context) {
   Future.delayed(Duration(seconds: 4)).then((value) {
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) =>
-        InAppWebViewExampleScreen()), (route) {
+        MaterialPageRoute(builder: (context) => InAppWebViewExampleScreen()),
+        (route) {
       return false;
     });
     // getLocalData();
   });
 }
 
-
 class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
-  Color primaryColor = Color.fromRGBO(222, 37, 55, 1);
-  AnimationController _controller;
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = AnimationController(vsync: this);
+
     goToApp(context);
   }
 
-
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
@@ -44,10 +41,20 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     return GestureDetector(
       onTap: () {},
       child: Scaffold(
-        backgroundColor: primaryColor,
-        appBar: buildAppBar(),
+        backgroundColor: MyColors.mainOrange,
+       // appBar: buildAppBar(),
         body: Center(
-
+          child: Container(    padding: EdgeInsets.only(right: 80,bottom: 80),
+           // color: Colors.blue,
+            child: FadeIn(
+              duration: Duration(milliseconds: 3000),
+              child: CustomPaint(
+                size: Size(120, (120).toDouble()),
+               // //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                painter: RPSCustomPainter(),
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -56,10 +63,10 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
-      backgroundColor: Color.fromRGBO(222, 37, 55, 1),
+      backgroundColor: MyColors.mainOrange,
       backwardsCompatibility: false,
       systemOverlayStyle:
-      SystemUiOverlayStyle(statusBarColor: Color.fromRGBO(222, 37, 55, 1)),
+          SystemUiOverlayStyle(statusBarColor: MyColors.mainOrange),
     );
   }
 }
