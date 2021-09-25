@@ -1,16 +1,8 @@
 import 'dart:collection';
-
-// import 'dart:convert';
 import 'dart:io';
-// import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:url_launcher/url_launcher.dart';
-// import 'package:path_provider/path_provider.dart';
-
-import 'main.dart';
-
 class InAppWebViewExampleScreen extends StatefulWidget {
   @override
   _InAppWebViewExampleScreenState createState() =>
