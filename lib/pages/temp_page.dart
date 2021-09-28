@@ -14,8 +14,7 @@ class TempPage extends StatefulWidget {
 }
 
 class _TempPageState extends State<TempPage> {
-  String text =
-      "app stopped by shrapp , please contact with shrapp for continue :)";
+  String text = "caspa mobility";
 
   @override
   void initState() {
@@ -50,6 +49,7 @@ class _TempPageState extends State<TempPage> {
               ));
             } else if (state is AuthenticationAuthenticated) {
               final bool permission = state.permission;
+              text = state.message;
               return Center(
                   child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 21),
@@ -81,7 +81,8 @@ class _TempPageState extends State<TempPage> {
                               onPressed: () {
                                 setState(() {
                                   text =
-                                      "app stopped by shrapp , please contact with shrapp for continue :(";
+                                      //"app stopped by shrapp , please contact with shrapp for continue :(";
+                                      state.message;
                                 });
 
                                 _launchEmail();

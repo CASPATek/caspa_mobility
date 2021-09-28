@@ -20,9 +20,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       Map<String, dynamic> advData = advSnapData.data();
       // AdvertisementList advertisementL = AdvertisementList.fromMap(advData);
       print("---------------- ${advData['permission']}")  ;
-      bool permission =advData['permission'];
+    final  bool permission =advData['permission'];
+    final  String  message =advData['message'];
       await Future.delayed(const Duration(seconds: 1));
-      emit(AuthenticationAuthenticated(permission: permission));
+      emit(AuthenticationAuthenticated(permission: permission,message: message));
     } catch (e) {
       print("auth error: " + e.toString());
       emit(AuthenticationUninitialized());
