@@ -2,16 +2,19 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:caspa_mobility/copy/test.dart';
-import 'package:caspa_mobility/splash_page.dart';
+import 'package:caspa_mobility/services/notification_service.dart';
+import 'package:caspa_mobility/pages/splash_page.dart';
 import 'package:caspa_mobility/utils/constants/colors.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:device_preview/plugins.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-import 'in_app_webiew_example.screen.dart';
+import 'pages/in_app_webiew_example.screen.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 
@@ -25,6 +28,9 @@ Future main() async {
   // await Permission.camera.request();
   // await Permission.microphone.request();
   // await Permission.storage.request();
+  await Firebase.initializeApp();
+  //FirebaseMessaging.instance;
+  await configureFcm() ;
   _createFakeData();
 
   if (Platform.isAndroid) {

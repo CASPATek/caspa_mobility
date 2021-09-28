@@ -1,9 +1,12 @@
 // Flutter imports:
 import 'package:animate_do/animate_do.dart';
+import 'package:caspa_mobility/cubit/authentication/authentication_cubit.dart';
+import 'package:caspa_mobility/pages/temp_page.dart';
 import 'package:caspa_mobility/utils/constants/colors.dart';
 import 'package:caspa_mobility/utils/paint/caspa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'in_app_webiew_example.screen.dart';
 
 class SplashPage extends StatefulWidget {
@@ -14,7 +17,9 @@ class SplashPage extends StatefulWidget {
 void goToApp(BuildContext context) {
   Future.delayed(Duration(seconds: 4)).then((value) {
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => InAppWebViewExampleScreen()),
+        MaterialPageRoute(builder: (context) => BlocProvider(
+            create: (_) => AuthenticationCubit()..appStarted(),
+            child: TempPage())),
         (route) {
       return false;
     });

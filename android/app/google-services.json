@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "481612065397",
+    "project_id": "caspa-48900",
+    "storage_bucket": "caspa-48900.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481612065397:android:621a8ba1fe810da92a663c",
+        "android_client_info": {
+          "package_name": "az.shrapp.caspa_mobility"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481612065397-0u526drvmmdhthb7ktb32ljpjdtr62ej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwJLaDWWcPheiGjxocF3w2z5pX9Cg1TCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481612065397-0u526drvmmdhthb7ktb32ljpjdtr62ej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
