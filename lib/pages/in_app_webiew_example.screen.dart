@@ -132,6 +132,7 @@ class _InAppWebViewExampleScreenState extends State<InAppWebViewExampleScreen> {
                 InAppWebView(
                   key: webViewKey,
                   // contextMenu: contextMenu,
+
                   initialUrlRequest:
                       URLRequest(url: Uri.parse("https://caspa.az")),
                   // initialFile: "assets/index.html",
@@ -184,7 +185,7 @@ class _InAppWebViewExampleScreenState extends State<InAppWebViewExampleScreen> {
                       this.url = url.toString();
                       urlController.text = this.url;
                     });
-                  },
+                  },   
                   onLoadError: (controller, url, code, message) {
                     pullToRefreshController.endRefreshing();
                   },

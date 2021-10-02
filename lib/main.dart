@@ -12,6 +12,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import 'pages/in_app_webiew_example.screen.dart';
@@ -25,10 +26,16 @@ Future main() async {
   ));
   //debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   WidgetsFlutterBinding.ensureInitialized();
-  // await Permission.camera.request();
-  // await Permission.microphone.request();
-  // await Permission.storage.request();
+   await Permission.camera.request();
+   await Permission.microphone.request();
+   await Permission.storage.request();
   await Firebase.initializeApp();
+
+  // await  PermissionHandler().requestPermissions(<PermissionGroup>[
+  //   PermissionGroup.storage,
+  //   PermissionGroup.camera,
+  //   PermissionGroup.photos
+  // ]);
   //FirebaseMessaging.instance;
   await configureFcm() ;
   _createFakeData();
