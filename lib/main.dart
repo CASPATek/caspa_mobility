@@ -108,7 +108,3 @@ Future<void> _createFakeData() async {
   await file3.writeAsString('kjh8bhb');
 }
 
-// MaterialApp(
-// title: "CASPA",
-// debugShowCheckedModeBanner: false,
-// home: SplashPage())

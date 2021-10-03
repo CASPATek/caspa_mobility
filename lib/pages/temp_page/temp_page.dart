@@ -5,7 +5,6 @@ import 'package:caspa_mobility/pages/temp_page/widgets/temp_page_success_body.da
 import 'package:caspa_mobility/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class TempPage extends StatefulWidget {
   const TempPage({Key key}) : super(key: key);
@@ -30,40 +29,43 @@ class _TempPageState extends State<TempPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
-          listener: (context, state) {
-            if (state is AuthenticationAuthenticated) {
-              final bool permission = state.permission;
-              if (permission) {
-                goToApp();
+      body: SafeArea(
+        child: Container(
+          child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
+            listener: (context, state) {
+              if (state is AuthenticationAuthenticated) {
+                final bool permission = state.permission;
+                if (permission) {
+                  goToApp();
+                }
+              } else {
+                print("permission is denied");
               }
-            } else {
-              print("permission is denied");
-            }
-          },
-          builder: (context, state) {
-            if (state is AuthenticationLoading) {
-              return Center(
-                  child: CircularProgressIndicator(
-                color: MyColors.mainOrange,
-              ));
-            } else if (state is AuthenticationAuthenticated) {
-              final bool permission = state.permission;
-              text = state.message;
-              return TempPageSuccessBody(
-                text: text,
-                permission: permission,
-              );
-            } else {
-              return Center(
-                  child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 21),
-                child:
-                    Text('Xəta baş verdi, zəhmət olmasa, yenidən cəhd edin.'),
-              ));
-            }
-          },
+            },
+            builder: (context, state) {
+              if (state is AuthenticationLoading) {
+                return Center(
+                    child: CircularProgressIndicator(
+                  color: MyColors.mainOrange,
+                ));
+              } else if (state is AuthenticationAuthenticated) {
+                final bool permission = state.permission;
+                text = state.message;
+
+                return TempPageSuccessBody(
+                  permission: permission,
+                  text: text,
+                );
+              } else {
+                return Center(
+                    child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 21),
+                  child:
+                      Text('Xəta baş verdi, zəhmət olmasa, yenidən cəhd edin.'),
+                ));
+              }
+            },
+          ),
         ),
       ),
     );
@@ -73,5 +75,4 @@ class _TempPageState extends State<TempPage> {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => InAppWebViewExampleScreen()));
   }
-
 }
