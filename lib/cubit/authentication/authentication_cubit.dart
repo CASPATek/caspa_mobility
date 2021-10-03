@@ -21,9 +21,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       // AdvertisementList advertisementL = AdvertisementList.fromMap(advData);
       print("---------------- ${advData['permission']}")  ;
     final  bool permission =advData['permission'];
+    final  bool permission2 =advData['permission2'];
     final  String  message =advData['message'];
-      await Future.delayed(const Duration(seconds: 1));
-      emit(AuthenticationAuthenticated(permission: permission,message: message));
+      await Future.delayed(const Duration(milliseconds: 500));
+      emit(AuthenticationAuthenticated(permission: permission2,message: message));
     } catch (e) {
       print("auth error: " + e.toString());
       emit(AuthenticationUninitialized());
