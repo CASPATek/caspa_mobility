@@ -1,7 +1,7 @@
 // Flutter imports:
 import 'package:animate_do/animate_do.dart';
 import 'package:caspa_mobility/cubit/authentication/authentication_cubit.dart';
-import 'package:caspa_mobility/pages/temp_page.dart';
+import 'package:caspa_mobility/pages/temp_page/temp_page.dart';
 import 'package:caspa_mobility/utils/constants/colors.dart';
 import 'package:caspa_mobility/utils/paint/caspa.dart';
 import 'package:flutter/material.dart';
