@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:caspa_mobility/copy/test.dart';
+import 'package:caspa_mobility/pages/anbar_page/anbar_page.dart';
+import 'package:caspa_mobility/pages/timeline_page/timeline_page.dart';
 import 'package:caspa_mobility/services/notification_service.dart';
 import 'package:caspa_mobility/pages/splash_page.dart';
 import 'package:caspa_mobility/utils/constants/colors.dart';
@@ -12,6 +14,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -63,28 +66,16 @@ Future main() async {
 
   //void main() => runApp(MaterialApp(home: WebViewExample()));
 
-  runApp(Row(
-    textDirection: TextDirection.ltr,
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-      /*Expanded(
-        child: Container(color: Colors.red),
-      ),*/
-      Expanded(
-        child: DevicePreview(
-          enabled: false,
-          plugins: [
-            const ScreenshotPlugin(),
-            const FileExplorerPlugin(),
-            const SharedPreferencesExplorerPlugin(),
-          ],
-          builder: (context) => MaterialApp(
-              title: "CASPA",
-              debugShowCheckedModeBanner: false,
-              home: SplashPage()),
-        ),
-      ),
-    ],
+  runApp(ScreenUtilInit(
+      designSize: Size(371, 812),
+  builder: () => MaterialApp(
+        title: "CASPA",
+        debugShowCheckedModeBanner: false,
+        home:
+        AnbarPage()
+      //    ProcessTimelinePage()
+      //            SplashPage()
+    ),
   ));
 
 }
@@ -108,3 +99,7 @@ Future<void> _createFakeData() async {
   await file3.writeAsString('kjh8bhb');
 }
 
+// MaterialApp(
+// title: "CASPA",
+// debugShowCheckedModeBanner: false,
+// home: SplashPage())

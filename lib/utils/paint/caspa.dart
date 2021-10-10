@@ -35,7 +35,7 @@ class RPSCustomPainter extends CustomPainter {
     path_0.close();
 
     Paint paint_0_fill = Paint()..style=PaintingStyle.fill;
-    paint_0_fill.color = Colors.white;
+    paint_0_fill.color = Colors.blue;
     canvas.drawPath(path_0,paint_0_fill);
 
     Path path_1 = Path();
