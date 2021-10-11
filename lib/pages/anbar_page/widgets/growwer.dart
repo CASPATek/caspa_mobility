@@ -37,6 +37,7 @@ class _GowwerState extends State<Gowwer> {
   Color color = Colors.transparent;
 
   bool isExpanded = false;
+  bool showContent = false;
 
   @override
   void initState() {
@@ -51,18 +52,24 @@ class _GowwerState extends State<Gowwer> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-
       onTap: () {
         _animateContainerSize();
-        _animateContainerColor();
+       // _animateContainerColor();
 
         setState(() {
           isExpanded = !isExpanded;
+
         });
+        if(showContent)showContent=false;
 
         print("is: +" + isExpanded.toString());
       },
       child: AnimatedContainer(
+        onEnd: (){
+          setState(() {
+            showContent=true;
+          });
+        },
         duration: Duration(milliseconds: duration),
         width: width,
         height: height,
@@ -71,42 +78,48 @@ class _GowwerState extends State<Gowwer> {
         //      ? BoxConstraints(maxHeight: 40.0)
         //      : BoxConstraints(maxHeight: double.infinity),
         color: color,
-        child: IgnorePointer(
-            child: Column(
+        child: Column(
           children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                widget.tile,
-                Positioned(
-                  right: 20,
-                  child: isExpanded
-                      ? FlipInX(
-                          child: RotatedBox(
-                          quarterTurns: 1,
-                          child: widget.trailler ??
-                              Icon(
-                                Icons.arrow_back_ios_outlined,
-                                size: 15,
-                                color: MyColors.mainOrange,
-                              ),
-                        ))
-                      : RotatedBox(
-                          quarterTurns: 1,
-                          child: FlipInX(
-                              child: widget.trailler ??
-                                  Icon(
-                                    Icons.arrow_forward_ios_rounded,
-                                    size: 15,
-                                    color: MyColors.mainOrange,
-                                  )),
-                        ),
-                )
-              ],
-            ),
-            isExpanded ? widget.content : Container()
+        IgnorePointer(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              widget.tile,
+              Positioned(
+                right: 20,
+                child: isExpanded
+                    ? FlipInX(
+                        child: RotatedBox(
+                        quarterTurns: 1,
+                        child: widget.trailler ??
+                            Icon(
+                              Icons.arrow_back_ios_outlined,
+                              size: 15,
+                              color: MyColors.mainOrange,
+                            ),
+                      ))
+                    : RotatedBox(
+                        quarterTurns: 1,
+                        child: FlipInX(
+                            child: widget.trailler ??
+                                Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  size: 15,
+                                  color: MyColors.mainOrange,
+                                )),
+                      ),
+              )
+            ],
+          ),
+        ),
+        (isExpanded&&showContent)
+            ? FadeIn(
+                duration: Duration(milliseconds: 200),
+             //   from: 50,
+                child: widget.content)
+            : Container()
           ],
-        )),
+        ),
         curve: Curves.fastOutSlowIn,
       ),
     );
