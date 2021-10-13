@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dialog.dart';
 import 'inner_shadow.dart';
 
 class CopiableField extends StatelessWidget {
@@ -44,17 +45,32 @@ class CopiableField extends StatelessWidget {
             color: Color.fromRGBO(9, 106, 159, 0.1),
             child: GestureDetector(
               onTap: () {
-                Clipboard.setData(new ClipboardData(text: data ?? ""))
-                    .then((_) {
-                  Snack.display(
+                // Clipboard.setData(new ClipboardData(text: data ?? ""))
+                //     .then((_) {
+                //   Snack.display(
+                //       context: context,
+                //       message: copyText ?? "coppied",
+                //       showSuccessIcon: true,
+                //       positive: true);
+                // });
+
+
+                showDialog(
+                  context: context,
+                  builder: (BuildContext contextZ) {
+                    return CaspaDialog(
                       context: context,
-                      message: copyText ?? "coppied",
-                      showSuccessIcon: true,
-                      positive: true);
-                });
+                      dialogTitle: "teest ",
+                      genderId: 1,
+                      index: 4,
+                      sW: MediaQuery.of(context).size.width,
+                    );
+                  },
+                );
+
               },
               child: Container(
-                height: 44.0+((maxLines??1-1)  * 10.0.sp),
+                height: 44.0+((maxLines??1-1)  * 20.0.sp),
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(horizontal: 18),
                 child: Center(

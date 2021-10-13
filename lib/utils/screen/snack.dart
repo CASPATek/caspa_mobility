@@ -23,7 +23,7 @@ class Snack {
           ? MyColors.newGREEN
           : MyColors.mainOrange .withOpacity(0.7),
       behavior: SnackBarBehavior.floating,
-      padding: EdgeInsets.only(right: 10),
+      padding:  const EdgeInsets.only(right: 10),
       content: Container(
         height: 50.sp,
         child: Stack(

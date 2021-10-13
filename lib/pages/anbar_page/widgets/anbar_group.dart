@@ -18,7 +18,7 @@ class AnbarGroup extends StatelessWidget {
         initColor: Colors.transparent,
         // endColor: Colors.amber,
         initH: 60,
-        endH: (94 * 5).toDouble() + (28.0.sp * 2) + 36,
+        endH: (92 * 5).toDouble() + (20.0.sp * (3-1)) + 36+50,
         //(94*element_sayi)+(14.0* (elave_setrli_field_sayi-1))+(padding)
         content: Container(
           margin: const EdgeInsets.symmetric(vertical: 18),
@@ -45,9 +45,9 @@ class AnbarGroup extends StatelessWidget {
                 data: "Bahtiyar",
               ),
               Container(color: Colors.red,
-               height: 94+64.sp,
+               //height: 94+64.sp,
                 child: CopiableField(
-                  maxLines: 1,
+                  maxLines: 3,
                   title: "Mahalle",
                   data:
                       "Yenisahra bdhsfkh jdsfbhjfsd jhfsjhdsfj jhjkshjfgd jhjshkjdsf hjkhsgf jhj hjghjhjhghgj hkjdsf hjkhsgf jhj hjghjhjhghgj hkjdsf hjkhsgf jhj hjghjhjhghgj hkjdsf hjkhsgf jhj hjghjhjhghgj",
