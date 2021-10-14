@@ -6,6 +6,7 @@ class MyColors {
 
   static const Color mainRED = const Color.fromRGBO(222, 37, 55, 1);
   static const Color mainOrange = const Color.fromRGBO(246, 102, 46, 1);
+  static const Color mainBlue = const Color.fromRGBO(64, 157, 209, 1);
   static const Color secondRED = const Color.fromRGBO(237, 50, 55, 1);
   static const Color textRED = const Color.fromRGBO(220, 1, 1, 1);
   static const Color errorRED = const Color.fromRGBO(238, 0, 4, 1);

@@ -1,6 +1,7 @@
 import 'package:caspa_mobility/utils/constants/colors.dart';
 import 'package:caspa_mobility/utils/constants/sized_box.dart';
 import 'package:caspa_mobility/utils/screen/snack.dart';
+import 'package:caspa_mobility/widgets/optimal_bottom_sheet/caspa_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,7 +23,8 @@ class CopiableField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.greenAccent,
+    return Container(
+      //color: Colors.greenAccent,
       //height: 72,
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -54,19 +56,21 @@ class CopiableField extends StatelessWidget {
                 //       positive: true);
                 // });
 
+                myModalBottomSheet(context);
 
-                showDialog(
-                  context: context,
-                  builder: (BuildContext contextZ) {
-                    return CaspaDialog(
-                      context: context,
-                      dialogTitle: "teest ",
-                      genderId: 1,
-                      index: 4,
-                      sW: MediaQuery.of(context).size.width,
-                    );
-                  },
-                );
+
+                // showDialog(
+                //   context: context,
+                //   builder: (BuildContext contextZ) {
+                //     return CaspaDialog(
+                //       context: context,
+                //       dialogTitle: "teest ",
+                //       genderId: 1,
+                //       index: 4,
+                //       sW: MediaQuery.of(context).size.width,
+                //     );
+                //   },
+                // );
 
               },
               child: Container(
@@ -105,4 +109,22 @@ class CopiableField extends StatelessWidget {
       ),
     );
   }
+
+  void myModalBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+        useRootNavigator: true,
+        enableDrag: true,
+        isDismissible: true,
+        // barrierColor: Colors.red,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
+        ),
+        context: context,
+        builder: (context) {
+          return CaspaBottomSheet(child: Container(),);
+        });
+  }
+
 }

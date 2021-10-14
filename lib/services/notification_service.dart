@@ -16,7 +16,7 @@ Future<void> onBackgroundMessage(RemoteMessage message) async {
 
 void configureFcm({String topic}) async {
   //initializeFCMNotification();
-  print("test");
+  //print("test");
   FirebaseMessaging.onMessage.listen((event) {
     print('onMessage: ${event.data}');
   });

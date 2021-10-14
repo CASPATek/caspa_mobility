@@ -4,15 +4,23 @@ import 'package:animate_do/animate_do.dart';
 import 'package:caspa_mobility/utils/constants/sized_box.dart';
 import 'package:flutter/material.dart';
 
+enum AlertType { Success, Error }
+
 class CaspaDialog extends StatefulWidget {
   final String dialogTitle;
   final int index;
   final double sW;
   final int genderId;
   final BuildContext context;
+  final AlertType alertType;
 
   CaspaDialog(
-      {this.dialogTitle, this.index, this.sW, this.genderId, this.context});
+      {this.dialogTitle,
+      this.index,
+      this.sW,
+      this.genderId,
+      this.context,
+      this.alertType});
 
   @override
   State<StatefulWidget> createState() {
@@ -40,22 +48,34 @@ class _CaspaDialogState extends State<CaspaDialog> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
-                  //  Color.fromRGBO(248, 102, 128, 1),
-                  Color.fromRGBO(248, 143, 102, 1),
-                  //Color.fromRGBO(248, 102, 216, 1),
-                  Color.fromRGBO(248, 102, 216, 1),
-                ])),
+                colors: widget.alertType == AlertType.Error
+                    ? [
+                        // Color.fromRGBO(248, 102, 128, 1),
+                        Color.fromRGBO(248, 143, 102, 1),
+                        //Color.fromRGBO(248, 102, 216, 1),
+                        Color.fromRGBO(248, 102, 216, 1),
+                      ]
+                    : [
+                        Color.fromRGBO(48, 143, 102, 1),
+                        //Color.fromRGBO(248, 102, 216, 1),
+                        Color.fromRGBO(48, 102, 216, 1),
+                      ])),
         width: widget.sW - 48,
         height: 291,
         child: Column(
           children: [
             Flash(
-              child: Icon(
-                Icons.cancel_rounded,
-                color: Colors.white,
-                size: 80,
-              ),
+              child: widget.alertType == AlertType.Error
+                  ? Icon(
+                      Icons.cancel_rounded,
+                      color: Colors.white,
+                      size: 80,
+                    )
+                  : Icon(
+                      Icons.add_alarm_sharp,
+                      color: Colors.white,
+                      size: 80,
+                    ),
             ),
             SizedBox(
               height: 30,
@@ -73,7 +93,9 @@ class _CaspaDialogState extends State<CaspaDialog> {
               borderRadius: BorderRadius.circular(30),
               child: InkWell(
                 borderRadius: BorderRadius.circular(30),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pop(context);
+                },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 55, vertical: 9),
                   decoration: BoxDecoration(
@@ -82,7 +104,9 @@ class _CaspaDialogState extends State<CaspaDialog> {
                   child: Text(
                     "OK",
                     style: TextStyle(
-                        color: Color.fromRGBO(248, 102, 216, 1),
+                        color: widget.alertType == AlertType.Error
+                            ? Color.fromRGBO(248, 102, 216, 1)
+                            : Color.fromRGBO(48, 102, 216, 1),
                         fontWeight: FontWeight.w700,
                         fontSize: 16),
                   ),
