@@ -72,9 +72,9 @@ Future main() async {
         title: "CASPA",
         debugShowCheckedModeBanner: false,
         home:
-        AnbarPage()
+      //  AnbarPage()
       //    ProcessTimelinePage()
-      //            SplashPage()
+                  SplashPage()
     ),
   ));
 

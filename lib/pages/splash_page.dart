@@ -15,7 +15,7 @@ class SplashPage extends StatefulWidget {
 }
 
 void goToApp(BuildContext context) {
-  Future.delayed(Duration(seconds: 4)).then((value) {
+  Future.delayed(Duration(seconds: 3)).then((value) {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => BlocProvider(
             create: (_) => AuthenticationCubit()..appStarted(),
