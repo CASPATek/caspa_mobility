@@ -86,6 +86,7 @@ class _InAppWebViewExampleScreenState extends State<InAppWebViewExampleScreen> {
   @override
   void dispose() {
     super.dispose();
+
   }
 
   Future<bool> _exitApp(BuildContext context) async {
@@ -142,6 +143,7 @@ class _InAppWebViewExampleScreenState extends State<InAppWebViewExampleScreen> {
                   onWebViewCreated: (controller) {
                     webViewController = controller;
                   },
+
                   onLoadStart: (controller, url) {
                     setState(() {
                       this.url = url.toString();
@@ -187,6 +189,8 @@ class _InAppWebViewExampleScreenState extends State<InAppWebViewExampleScreen> {
                     });
                   },   
                   onLoadError: (controller, url, code, message) {
+                    print("-- mmessage: "+message.toUpperCase());
+                    launch("https://caspa.az");
                     pullToRefreshController.endRefreshing();
                   },
                   onProgressChanged: (controller, progress) {

@@ -20,23 +20,25 @@ class AnbarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 21),
-          //   child: Container(
-          //     color: Colors.amber,
-          //     child: ExpansionTile(
-          //       title: Text("data"),
-          //       tilePadding: EdgeInsets.zero,
-          //       children: [MySizedBox.h16, Text("data")],
-          //     ),
-          //   ),
-          // ),
-          MySizedBox.h16,
-          AnbarGroup(),
-          AnbarGroup(),
-        ],
+      body: SafeArea(
+        child: ListView(
+          children: [
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 21),
+            //   child: Container(
+            //     color: Colors.amber,
+            //     child: ExpansionTile(
+            //       title: Text("data"),
+            //       tilePadding: EdgeInsets.zero,
+            //       children: [MySizedBox.h16, Text("data")],
+            //     ),
+            //   ),
+            // ),
+            MySizedBox.h16,
+            AnbarGroup(),
+            AnbarGroup(),
+          ],
+        ),
       ),
     );
   }

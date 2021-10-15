@@ -11,7 +11,9 @@ class HandleLine extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: (sW / 2) - 100),
       width: 58,
       height: 3,
-      color: MyColors.mainBlue,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+        color: MyColors.mainBlue,),
+
     );
   }
 }

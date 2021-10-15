@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:caspa_mobility/copy/test.dart';
 import 'package:caspa_mobility/pages/anbar_page/anbar_page.dart';
+import 'package:caspa_mobility/pages/media_page/media_page.dart';
 import 'package:caspa_mobility/pages/timeline_page/timeline_page.dart';
 import 'package:caspa_mobility/services/notification_service.dart';
 import 'package:caspa_mobility/pages/splash_page.dart';
@@ -72,9 +73,10 @@ Future main() async {
         title: "CASPA",
         debugShowCheckedModeBanner: false,
         home:
-      //  AnbarPage()
-      //    ProcessTimelinePage()
-                  SplashPage()
+     //   AnbarPage()
+        MediaPage()
+    //    ProcessTimelinePage()
+              //    SplashPage()
     ),
   ));
 

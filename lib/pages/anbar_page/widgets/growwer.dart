@@ -1,8 +1,11 @@
 import 'dart:math';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:caspa_mobility/pages/anbar_page/widgets/anbar_group.dart';
 import 'package:caspa_mobility/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
+
+import 'expanded_section.dart';
 
 class Gowwer extends StatefulWidget {
   Color initColor;
@@ -54,20 +57,19 @@ class _GowwerState extends State<Gowwer> {
     return GestureDetector(
       onTap: () {
         _animateContainerSize();
-       // _animateContainerColor();
+        // _animateContainerColor();
 
         setState(() {
           isExpanded = !isExpanded;
-
         });
-        if(showContent)showContent=false;
+        if (showContent) showContent = false;
 
         print("is: +" + isExpanded.toString());
       },
       child: AnimatedContainer(
-        onEnd: (){
+        onEnd: () {
           setState(() {
-            showContent=true;
+            showContent = true;
           });
         },
         duration: Duration(milliseconds: duration),
@@ -80,44 +82,44 @@ class _GowwerState extends State<Gowwer> {
         color: color,
         child: Column(
           children: [
-        IgnorePointer(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              widget.tile,
-              Positioned(
-                right: 20,
-                child: isExpanded
-                    ? FlipInX(
-                        child: RotatedBox(
-                        quarterTurns: 1,
-                        child: widget.trailler ??
-                            Icon(
-                              Icons.arrow_back_ios_outlined,
-                              size: 15,
-                              color: MyColors.mainOrange,
-                            ),
-                      ))
-                    : RotatedBox(
-                        quarterTurns: 1,
-                        child: FlipInX(
+            IgnorePointer(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  widget.tile,
+                  Positioned(
+                    right: 20,
+                    child: isExpanded
+                        ? FlipInX(
+                            child: RotatedBox(
+                            quarterTurns: 1,
                             child: widget.trailler ??
                                 Icon(
-                                  Icons.arrow_forward_ios_rounded,
+                                  Icons.arrow_back_ios_outlined,
                                   size: 15,
                                   color: MyColors.mainOrange,
-                                )),
-                      ),
-              )
-            ],
-          ),
-        ),
-        (isExpanded&&showContent)
-            ? FadeIn(
-                duration: Duration(milliseconds: 200),
-             //   from: 50,
-                child: widget.content)
-            : Container()
+                                ),
+                          ))
+                        : RotatedBox(
+                            quarterTurns: 1,
+                            child: FlipInX(
+                                child: widget.trailler ??
+                                    Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      size: 15,
+                                      color: MyColors.mainOrange,
+                                    )),
+                          ),
+                  )
+                ],
+              ),
+            ),
+            (isExpanded)
+                ? ExpandedSection(
+                    expand: isExpanded,
+                    child: widget.content,
+                  )
+                : Container()
           ],
         ),
         curve: Curves.fastOutSlowIn,

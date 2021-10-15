@@ -58,7 +58,6 @@ class CopiableField extends StatelessWidget {
 
                 myModalBottomSheet(context);
 
-
                 // showDialog(
                 //   context: context,
                 //   builder: (BuildContext contextZ) {
@@ -71,10 +70,9 @@ class CopiableField extends StatelessWidget {
                 //     );
                 //   },
                 // );
-
               },
               child: Container(
-                height: 44.0+((maxLines??1-1)  * 20.0.sp),
+                height: 44.0 + ((maxLines ?? 1 - 1) * 20.0.sp),
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(horizontal: 18),
                 child: Center(
@@ -115,16 +113,32 @@ class CopiableField extends StatelessWidget {
         useRootNavigator: true,
         enableDrag: true,
         isDismissible: true,
+
         // barrierColor: Colors.red,
         isScrollControlled: true,
+        backgroundColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
         ),
         context: context,
         builder: (context) {
-          return CaspaBottomSheet(child: Container(),);
+          return CaspaBottomSheet(
+            child: Column(
+              //  shrinkWrap: true,
+              //    scrollDirection: Axis.vertical,
+              //physics: AlwaysScrollableScrollPhysics(),
+              children: [
+                for (int i = 0; i < 100; i++)
+                  Container(
+                    height: 30,
+                    margin: EdgeInsets.symmetric(vertical: 5),
+                    color: Colors.yellow,
+                    child: Text("$i"),
+                  ),
+              ],
+            ),
+          );
         });
   }
-
 }
