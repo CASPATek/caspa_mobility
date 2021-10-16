@@ -7,10 +7,16 @@ class MediaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+       // backgroundColor: MyColors.mainBlue,
+      ),
       body: Container(
+        color: Colors.white,
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
+          padding: EdgeInsets.symmetric(vertical: 20),
           physics:
               AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
           children: [
